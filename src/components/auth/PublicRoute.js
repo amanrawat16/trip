@@ -2,20 +2,21 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/contexts/AuthContext';
 
-export default function Home() {
-  const [loading, setLoading] = useState(true);
-  const { user } = useAuth();
+export default function PublicRoute({ children }) {
+  const { user, loading } = useAuth();
   const router = useRouter();
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
   useEffect(() => {
-    if (user) {
-      router.push('/dashboard');
-    } else {
-      router.push('/login');
+    if (!loading && user && !isRedirecting) {
+      setIsRedirecting(true);
+      setTimeout(() => {
+        router.push('/dashboard');
+      }, 0);
     }
-  }, [user, router]);
+  }, [user, loading, router, isRedirecting]);
 
-  if (loading) {
+  if (loading || isRedirecting) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -25,6 +26,9 @@ export default function Home() {
     );
   }
 
-  return null;
-}
- 
+  if (user) {
+    return null;
+  }
+
+  return children;
+} 

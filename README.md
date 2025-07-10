@@ -1,40 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Car Rental Admin Dashboard
 
-## Getting Started
+I built this car rental admin dashboard using Next.js with Pages Router. It's a full-stack app for managing car rental listings with authentication, approval workflows, and audit trails.
 
-First, run the development server:
+## Features Built
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Core Features
+- **Login system** with demo credentials (admin@example.com / password123)
+- **Dashboard** with paginated car rental listings
+- **Approve/Reject** buttons for pending listings
+- **Edit functionality** with modal form
+- **Status filtering** (all/pending/approved/rejected)
+- **Audit trail** with action logging and timestamps
+- **Pagination** for listings and audit entries
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Technical Implementation
+- **Next.js 15 with Pages Router** - Used Pages Router for better SSR control with getServerSideProps
+- **React Context API** - For auth state management
+- **TailwindCSS** - For modern, responsive styling
+- **Server-side rendering** - getServerSideProps for initial data loading
+- **Protected routes** - Auth-based route protection
+- **API routes** - RESTful endpoints for all CRUD operations
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## How to Run
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+2. **Start the dev server**
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Open the app**
+   - Go to `http://localhost:3000`
+   - Login with: admin@example.com / password123
 
-## Learn More
+## Extra Features Added
 
-To learn more about Next.js, take a look at the following resources:
+- **Row-level loading states** - Only the specific row being updated shows loading
+- **Row-based rendering** - Only affected rows re-render, not entire table
+- **Optimistic UI updates** - Immediate feedback for better UX
+- **Custom useListings hook** - With caching to prevent duplicate API calls
+- **React.memo & useCallback** - Performance optimizations
+- **Error handling** throughout the application
+- **Responsive design** for mobile and desktop
+- **Dubai-specific car rental data**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## Requirements Met
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Core Requirements ✅
+- [x] Next.js with Pages Router
+- [x] Login authentication
+- [x] Dashboard with paginated listings
+- [x] Approve, reject, edit actions
+- [x] API routes for all operations
+- [x] SSR with getServerSideProps
+- [x] Protected routes
+- [x] React Context API
+- [x] TailwindCSS styling
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+### Stretch Goals ✅
+- [x] Status filtering
+- [x] Audit trail
+- [x] Performance optimizations
