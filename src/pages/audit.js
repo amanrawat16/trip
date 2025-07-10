@@ -132,7 +132,7 @@ export default function Audit({ initialAuditTrail, totalPages }) {
                                   <div key={field} className="text-sm">
                                     <span className="font-medium text-gray-900">{field}:</span>
                                     <span className="text-gray-700 ml-1">
-                                      "{change.from}" → "{change.to}"
+                                      &quot;{change.from}&quot; → &quot;{change.to}&quot;
                                     </span>
                                   </div>
                                 );
